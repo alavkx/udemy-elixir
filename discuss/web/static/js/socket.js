@@ -12,8 +12,9 @@ function createSocket(topicId) {
   channel.on(`comments:${topicId}:new`, renderComment)
 
   document.querySelector('button').addEventListener('click', function () {
-    const content = document.querySelector('textarea').value
-    channel.push('comment:add', { content })
+    const input = document.querySelector('textarea')
+    channel.push('comment:add', { content: input.value })
+    input.value = ''
   })
 }
 
